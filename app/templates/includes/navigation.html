@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm navbar-dark" id="nav">
+    <a class="navbar-brand" href="{{url_for('main.home')}}">Recipes and wine</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+        data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('main.home')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.profile')}}">Profile</a>
+            </li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.search')}}">Search</a>
+            </li>
+            {% endif %}
+            
+            
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if not current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('authentication.login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{ url_for('authentication.register') }}" class="nav-link">Register</a></li>
+            {% else %}
+            <li class="nav-item"><a href="{{ url_for('authentication.logout') }}" class="nav-link">Logout</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

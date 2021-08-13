@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h3>Profile | Welcome {{ u }}</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-fluid" src="{{ current_user.image }}" alt="profile" />
+    </div>
+    <div class="col-md">
+        <form action="{{ url_for('main.profile')}}" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{current_user.first_name}}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{current_user.last_name}}" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="example@email.com" name="email" value="{{current_user.email}}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="profile-image" id="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control" name="bio" id="" cols="30" rows="10"  placeholder="Type bio here">{{ current_user.bio }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-info btn-block" id="update-profile" value="Update Profile" />
+                </div>
+            </div>
+
+    </div>
+        </form>
+</div>
+</div>
+
+
+{% endblock content %}

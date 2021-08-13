@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    
+
+    <div class="card" style="width: 60rem;">
+        <img class="card-img-top" alt="Card image cap" id="recipeImage" src=" {{ recipe_id[0]['image'] }}">
+        <div class="card-body">
+          <h5 class="card-title" id="recipeTitle">{{ recipe_id[0]['title'] }}</h5>
+          <p class="card-text">{% for entry in recipe_id[0]['extendedIngredients'] %}
+
+            <li>{{entry['originalString']}}</li>
+        
+        {% endfor %}</p>
+        <p id="recipeInstructions">{{ recipe_id[0]['instructions'] }}</p>
+          <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+        </div>
+      </div>
+
+    
+    
+
+{% endblock content %}

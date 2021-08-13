@@ -1,0 +1,173 @@
+header {
+    margin-bottom: 45px;
+}
+
+footer {
+    margin-top: 100px;
+}
+
+.content-spacing {
+    padding: 35px 0;
+}
+
+#profile-body {
+    background-color: bisque;
+}
+
+.navbar-dark {
+    background-color: #7C2B1A;
+}
+
+.navbar a {
+    color: white;
+}
+
+#profile-footer {
+    background-color: #7C2B1A;
+}
+
+#update-profile {
+    background-color: #7C2B1A;
+}
+
+#home-img {
+    width: 100%;
+    height: auto;
+    top: 0px;
+    opacity: 0.6;
+}
+
+#home-footer {
+    margin-top: 0px;
+    background-color: #7C2B1A;
+}
+
+#home-header {
+    margin-bottom: 0px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#home-register {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    padding-top: 23%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 5vw;
+    color: white;
+    font-family: arial;
+}
+
+#home-logo {
+    text-align: center;
+    height: auto;
+    width: 15%;
+}
+
+#search-container {
+    width: 25rem;
+    height: 100%;
+    margin: 0 1rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.searchbar {
+    font-size: 1.4rem;
+    width: 25rem;
+    height: 5rem;
+    border: none;
+    outline: none;
+    border-radius: 10rem;
+    padding: 2rem;
+    transition: all .1s;
+    transition-delay: .1s;
+}
+
+.searchbar:hover {
+    width: 27rem;
+    height: 6rem;
+}
+
+#search-btn {
+    height: 2.5rem;
+    width: 3rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    transition: all .1s;
+    transition-delay: .1s;
+    
+}
+
+.searchIcon {
+    padding-bottom: 2px;
+}
+
+#search-btn:hover {
+    cursor: pointer;
+}
+
+.searchbar:hover+#search-btn {
+    height: 2.5rem;
+    top: 1.8rem;
+    right: 0;
+}
+
+.searchbar::placeholder {
+    opacity: .3;
+}
+
+#login-btn {
+    background-color: #7C2B1A;
+}
+
+#register-btn {
+    background-color: #7C2B1A;
+}
+
+.card{
+    border-radius: 25px;
+    perspective: 1px;
+    margin-bottom: 10px;
+}
+
+#pairing-card {
+    border-radius: 25px;
+    margin-top: 500px;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color:  #FEFFE7;
+    
+}
+
+#wine-card {
+    background-color:  #FEFFE7;
+    overflow: 'hidden';
+}
+
+#email-btn {
+    background-color: #7C2B1A;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#wineImage {
+    border-radius: 25px;
+}
+
+#recipeImage {
+    border-radius: 25px;
+}

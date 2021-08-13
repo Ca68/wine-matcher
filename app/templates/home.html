@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Recipes and wine</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+
+<body id="home-body">
+
+    <header id="home-header">
+        <nav class="navbar navbar-expand-sm navbar-dark" id="nav">
+            <a class="navbar-brand" href="{{url_for('main.home')}}">Recipes and wine</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('main.home')}}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.profile')}}">Profile</a>
+            </li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.search')}}">Search</a>
+            </li>
+            {% endif %}
+                    
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if not current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('authentication.login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{ url_for('authentication.register') }}" class="nav-link">Register</a></li>
+            {% else %}
+            <li class="nav-item"><a href="{{ url_for('authentication.logout') }}" class="nav-link">Logout</a></li>
+            {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+
+
+    </header>
+
+
+
+    <main id="main-home">
+
+        <section class='page-bg'>
+            <div>
+                <img class="bg-image" id="home-img" src="../static/images/home_page2.png"  />
+                <div class="text" id="home-register">Welcome!
+                    <a class="text" href="{{ url_for('authentication.register') }}">Register</a>
+                <img src="../static/images/logo2.png" id="home-logo" alt="" />
+                
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+
+    </main>
+
+    <footer class="text-light" id="home-footer">
+        <div class="container">
+            <div class="row content-spacing">
+                <div class="col-md-3">
+                    <h5>Page Links</h5>
+                    <hr class="border-light" />
+                    <ul class="list-unstyled">
+                        <li class="list-item"><a class="text-light" href="{{ url_for('main.home') }}">Home</a></li>
+                        <li class="list-item"><a class="text-light" href="{{ url_for('main.profile') }}">Profile</a></li>
+                        
+
+
+                    </ul>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div>
+            <h1>With one ingredient, get recipes and a wine recommendation</h1>
+
+        </div>
+        
+        <div class="col-md-6">
+
+            <h3>To find a recipe and wine, enter an ingredient (steak, salad, salmon...)</h3>
+            <hr />
+
+
+            <form action="#" class="form-inline my-2 my-lg-0" method="POST">
+                <div class="container" id="search-container">
+                    <input type="text" maxlength="12" placeholder="Enter an ingredient" class="searchbar" name="q">
+                    <!--<input  id="search-btn"  type="submit">-->
+                    <button id="search-btn" type="submit" class="btn btn-primary">
+                        <i class="fa fa-search searchIcon"></i>
+                        <!--<img src="https://images-na.ssl-images-amazon.com/images/I/41gYkruZM2L.png"/>-->
+                    </button>
+
+                </div>
+            </form>
+
+
+            {% if data!=undefined and data|length > 0 %}
+            <h4>Recipes using that ingredient</h4>
+            <hr/>
+            {% else %}
+            {% if data==undefined%}
+            <hr />
+            <p>No recipes found</p>
+
+            {% else %}
+            <p></p>
+            {% endif %}
+            {% endif %}
+
+            {% for entry in data %}
+            <div class="card" style="width: 30rem;">
+                <img class="card-img-top" src="{{entry['image']}}" id="recipeImage" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{entry['title'] }}</h5>
+                    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                    <a href="{{ url_for('main.recipe', recipe_id=entry['id']) }}" class="btn btn-primary">View
+                        recipe</a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+        <div class="col-md-6">
+            {% if wine_data['pairingText'] %}
+            <div class="card m-5 mt-5"  id="pairing-card" style="width: 30rem;">
+                <h5 class="card-title">Wine pairing information</h5>
+                <p>
+                    {{wine_data['pairingText']}}
+                </p>
+
+            </div>
+            {% endif %}
+            {% for wine in wine_data['productMatches'] %}
+
+            <div class="card m-5" id="wine-card" style="width: 30rem;">
+                <img class="card-img-top" src="{{wine['imageUrl']}}" id="wineImage" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Recommended wine: {{wine['title'] }}</h5>
+                    <p class="card-text">{{wine['description']}}</p>
+                    <a href="{{ wine['link'] }}" class="btn btn-primary">View wine</a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+
+
+
+    {#<div class="col-6">
+        <p>2 of 2</p>
+        <h3>To find a wine, enter a dish name</h3>
+
+
+        <form id="w-form" action="#" class="form-inline my-2 my-lg-0" method="POST">
+            <div class="container" id="search-container">
+                <input type="text" maxlength="12" placeholder="Enter an ingredient" class="searchbar" name="w">
+                <!--<input  id="search-btn"  type="submit">-->
+                <button id="search-btn" type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    <!--<img src="https://images-na.ssl-images-amazon.com/images/I/41gYkruZM2L.png"/>-->
+                </button>
+
+            </div>
+        </form>
+
+        <div class='col-xs-12 col-sm-12 col-md-10 col-lg-10'>
+            {% if wine_data!=undefined and wine_data|length > 0 %}
+            <h4>Wines for that ingredient</h4>
+            {% else %}
+            {% if wine_data==undefined%}
+            <p>No recipes found</p>
+            {% else %}
+            <p></p>
+            {% endif %}
+            {% endif %}
+            <table>
+                <tr>
+                    {% for entry in wine_data %}
+                    <!--<div class='col-xs-3 col-sm-3 col-md-3 col-lg-3' id="recipeSelectionComponent">-->
+                    <img id="wineImage" src="{{entry['image']}}">
+                    <!--<button id="{{entry['id']}}" type="submit" class="btn btn-link" onclick="recipeSteps({{ entry['id'] }})">
+                    {{entry['title'] }} 
+                </button>-->
+
+                    <!--<a href='https://api.spoonacular.com/recipes/{{entry["id"]}}/information?includeNutrition=false&apiKey={{API_KEY}}' >{{entry['title'] }}</a>-->
+                    <a href='{{ url_for("main.wine", wine=entry["wine"]) }}'>{{entry['title'] }}</a>
+
+                    <!--</div>-->
+
+                    {% endfor %}
+                </tr>
+
+            </table>
+
+
+        </div>#}
+
+    </div>
+</div>
+
+
+{% endblock content %}
