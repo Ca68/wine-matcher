@@ -11,6 +11,7 @@ import time, smtplib
 from werkzeug.utils import secure_filename
 import requests
 import json
+import os
 
 
 """
@@ -60,7 +61,27 @@ def profile():
     return render_template('profile.html')
 
 
-
+@app.route('/contact', methods= ['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        form_data = {
+            'email' : request.form.get('email'),
+            'message' : request.form.get('message'),
+            'subject' : request.form.get('subject')
+        }
+        
+        
+        
+        server = smtplib.SMTP(current_app.config.get('MAIL_SERVER'), current_app.config.get('MAIL_PORT'))
+        server.ehlo()
+        server.starttls()
+        server.login(current_app.config.get('MAIL_USERNAME'), current_app.config.get('MAIL_PASSWORD'))
+        server.sendmail(current_app.config.get('MAIL_USERNAME'),current_app.config.get('MAIL_USERNAME'), 
+                f'\nFROM: {form_data["email"]}\nSUBJECT: {form_data["subject"]}\n\n MESSAGE: {form_data["message"]}')
+        server.quit()
+        flash('Thank you for your message. We will get back to you as soon as possible.', 'success')
+        return redirect(url_for('main.contact'))
+    return render_template("contact.html")
 
 
 
